@@ -71,7 +71,7 @@ function displayCards(arrayOfIssueObj){
     </p>
 
     <!-- Tags -->
-    <div class="flex gap-3">
+    <div class="flex gap-3 flex-col md:flex-row">
 
       <!-- Bug -->
     
@@ -209,12 +209,16 @@ async function  modalShow(id){
   </div>
 
   <!-- Labels -->
-  <div class="flex gap-3">
-    
-    <span class="flex items-center gap-2 border border-red-300 text-red-500 px-3 py-1 rounded-full text-sm font-semibold">
+  <div class="flex flex-col gap-3 md:flex-row">
+    ${obj.labels[0]=="bug"?`<span class="flex items-center gap-2 border border-red-300 text-red-500 px-3 py-1 rounded-full text-sm font-semibold">
       <i class="fa-solid fa-bug"></i>
         ${obj.labels[0]}
-    </span>
+    </span>`:
+         `<span class="flex items-center gap-2 border border-green-300 text-green-500 px-3 py-1 rounded-full text-sm font-semibold">
+      <i class="fa-solid fa-bug"></i>
+        ${obj.labels[1]}
+    </span>`}
+    
 
     <span class="flex items-center gap-2 border border-yellow-400 text-yellow-600 px-3 py-1 rounded-full text-sm font-semibold">
       <i class="fa-solid fa-circle-question"></i>

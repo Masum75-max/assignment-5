@@ -192,35 +192,35 @@ async function  modalShow(id){
    innerHTML="";
    inner.innerHTML=`
    
-     <div class="max-w-xl bg-gray-100 rounded-xl shadow-md overflow-hidden border-t-4 border-green-600 p-5 space-y-4">
+<div class="max-w-xl w-full bg-gray-100 rounded-xl shadow-md overflow-hidden border-t-4 border-green-600 p-4 sm:p-5 space-y-4">
 
   <!-- Title -->
-  <h2 class="text-2xl font-bold text-gray-800">
+  <h2 class="text-xl sm:text-2xl font-bold text-gray-800 break-words">
     ${obj.title}
   </h2>
 
   <!-- Status + meta -->
-  <div class="flex items-center gap-3 text-sm text-gray-500">
+  <div class="flex flex-wrap items-center gap-2 sm:gap-3 text-xs sm:text-sm text-gray-500">
     <span class="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
       Opened
     </span>
     <span>• Opened by ${obj.assignee}</span>
-    <span>•   ${obj.updatedAt}</span>
+    <span>• ${obj.updatedAt}</span>
   </div>
 
   <!-- Labels -->
-  <div class="flex flex-col gap-3 md:flex-row">
-    ${obj.labels[0]=="bug"?`<span class="flex items-center gap-2 border border-red-300 text-red-500 px-3 py-1 rounded-full text-sm font-semibold">
+  <div class="flex flex-wrap gap-2 md:flex-row">
+    ${obj.labels[0]=="bug"?`<span class="flex items-center gap-2 border border-red-300 text-red-500 px-3 py-1 rounded-full text-xs sm:text-sm font-semibold">
       <i class="fa-solid fa-bug"></i>
         ${obj.labels[0]}
     </span>`:
-         `<span class="flex items-center gap-2 border border-green-300 text-green-500 px-3 py-1 rounded-full text-sm font-semibold">
+         `<span class="flex items-center gap-2 border border-green-300 text-green-500 px-3 py-1 rounded-full text-xs sm:text-sm font-semibold">
       <i class="fa-solid fa-bug"></i>
         ${obj.labels[1]}
     </span>`}
     
 
-    <span class="flex items-center gap-2 border border-yellow-400 text-yellow-600 px-3 py-1 rounded-full text-sm font-semibold">
+    <span class="flex items-center gap-2 border border-yellow-400 text-yellow-600 px-3 py-1 rounded-full text-xs sm:text-sm font-semibold">
       <i class="fa-solid fa-circle-question"></i>
       ${obj.labels[1]??"Help wanted"}
     </span>
@@ -228,20 +228,20 @@ async function  modalShow(id){
   </div>
 
   <!-- Description -->
-  <p class="text-gray-600">
+  <p class="text-sm sm:text-base text-gray-600 break-words">
       ${obj.description}
   </p>
 
   <!-- Footer info -->
-  <div class="bg-gray-200 rounded-lg p-4 flex justify-between items-center">
+  <div class="bg-gray-200 rounded-lg p-3 sm:p-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
     
     <div>
-      <p class="text-gray-500 text-sm">Assignee:</p>
-      <p class="font-semibold text-gray-800">  ${obj.assignee}</p>
+      <p class="text-gray-500 text-xs sm:text-sm">Assignee:</p>
+      <p class="font-semibold text-gray-800"> ${obj.assignee}</p>
     </div>
 
     <div>
-      <p class="text-gray-500 text-sm">Priority:</p>
+      <p class="text-gray-500 text-xs sm:text-sm">Priority:</p>
       <span class="bg-red-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
         ${obj.priority}
       </span>
@@ -251,7 +251,7 @@ async function  modalShow(id){
 
 </div>
    
-   `
+`
 
    modal.showModal();
 

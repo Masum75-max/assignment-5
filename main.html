@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Github Issue Tracker</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- DaisyUI + Tailwind -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Apply Google Font -->
+    <style>
+        body{
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+
+</head>
+
+<body>
+
+  <!-- nav -->
+    <div class="navbar bg-base-100 shadow-sm md:w-11/12 mx-auto">
+  <div class="flex-1">
+    <a class="btn btn-ghost text-xl hidden md:block"><img class="h-10 w-10" src="./assets/github-logo.png"></a><p class="font-bold hidden md:block">Github Issues</p>
+  </div>
+  <div class="flex gap-2">
+    <input  type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
+     <button class="btn btn-outline btn-info">Search</button>
+     <button class="btn btn-primary">+ New Issue</button>
+  </div>
+</div>
+
+
+
+
+  <!-- all the buttons -->
+<section id="buttons" class="w-11/12 mx-auto shadow-xl flex gap-3 mt-10 py-4 px-3">
+ <button id="all-btn" class="btn btn-soft btn-primary ">All</button>
+ <button id="open-btn" class="btn btn-soft btn-primary  bg-white text-black">Open</button>
+ <button id="closed-btn" class="btn btn-soft btn-primary  bg-white text-black">Closed</button>
+</section>
+
+
+
+<!-- counter -->
+ <section id="counter" class="w-11/12 mx-auto shadow-xl mt-10 px-3 py-4 flex justify-between items-center">
+
+    <div class="flex gap-3">
+           <img class="w-8" src="./assets/Aperture.png">
+           <div>
+               <p class="font-bold"><span id="issue-counter">50</span> Issues</p>
+               <p class="text-gray-400 hidden md:block">Track and manage your issues</p> 
+           </div>
+    </div>
+
+    <div class="flex gap-3 items-center">
+     <div class="flex items-center gap-1 text-sm font-bold"><img class="h-4 w-4" src="./assets/Open-Status.png"> Open</div>
+     <div class="flex items-center gap-1 text-sm font-bold"><img class="h-4 w-4" src="./assets/Closed- Status .png">Close</div>
+
+    </div>
+
+
+ </section>
+
+
+
+
+
+
+
+
+
+
+  <!-- Cards section -->
+
+ <section id="cards" class="w-11/12 mx-auto shadow-xl mt-10 px-5 py-4 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    
+
+ 
+ </section>
+
+
+
+   <!-- Spinner -->
+ <section id="spinner">
+         
+
+ </section>
+
+
+
+ 
+
+
+         <script src="./script/index.js"></script>
+</body>
+</html>

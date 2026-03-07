@@ -79,7 +79,7 @@ function displayCards(arrayOfIssueObj){
         obj.labels[0]==="bug"?`<span class="flex items-center gap-2 border border-red-300 text-red-500 px-4 py-2 rounded-full font-semibold">
          <i class="fa-solid fa-bug"></i>
          ${obj.labels[0]}
-       </span>`:`<span class="flex items-center gap-2 border border-green-300 text-green-500 px-4 py-2 rounded-full font-semibold">
+       </span>`:`<span class="flex items-center gap-1 border border-green-300 text-green-500 px-1 py-2 rounded-full font-semibold">
          <i class="fa-solid fa-star"></i>
          ${obj.labels[0]}
        </span>`
@@ -239,7 +239,7 @@ async function  modalShow(id){
     <div>
       <p class="text-gray-500 text-sm">Priority:</p>
       <span class="bg-red-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
-        HIGH
+        ${obj.priority}
       </span>
     </div>
 

@@ -253,3 +253,17 @@ async function  modalShow(id){
 
 }
 
+
+
+const searchBtn=document.getElementById("search-feild");
+
+searchBtn.addEventListener("input",async(e)=>{
+    const tar=e.target.value;
+    const url=`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${tar}`
+   const res=await fetch(url)
+   const data=await res.json();
+
+   const obj=data.data;
+
+   displayCards(obj)
+})

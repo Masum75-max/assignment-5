@@ -3,7 +3,8 @@ const counter= document.getElementById("issue-counter")
 const openbtn=document.getElementById("open-btn")
 const closedBtn=document.getElementById("closed-btn")
 const allBtn=document.getElementById("all-btn")
-
+const spinner=document.getElementById("spinner")
+const modal=document.getElementById("modal");
 const btnSet=[openbtn,closedBtn];
 
 
@@ -32,19 +33,19 @@ allCardLoader();
 
 
 function displayCards(arrayOfIssueObj){
+ 
    
-
     counter.innerText=arrayOfIssueObj.length
   cards.innerHTML="";
     for(const obj of arrayOfIssueObj){
 
-        console.log(obj)
+        
         
         const div=document.createElement("div");
         div.classList=`max-w-xl bg-gray-100 rounded-xl shadow-md overflow-hidden border-t-4 ${obj.status === "open"?"border-green-600":"border-purple-900"}`
 
         div.innerHTML=`
-         <div class="p-6">
+         <div onclick="modalShow(${obj.id})" class="p-6">
 
     <!-- Status + Priority -->
     <div class="flex justify-between items-center mb-4">
@@ -103,6 +104,7 @@ function displayCards(arrayOfIssueObj){
        cards.append(div)
 
     }
+    spinner.classList.add("hidden")
 }
 
 
@@ -111,7 +113,7 @@ function displayCards(arrayOfIssueObj){
 // open-btn handler
 
 openbtn.addEventListener("click",async()=>{
-
+  spinner.classList.remove("hidden")
     for(const btn of btnSet){
         if(btn==openbtn){
             btn.classList.add("bg-blue-700","text-white")
@@ -139,6 +141,7 @@ openbtn.addEventListener("click",async()=>{
 //closed-btn handler
 
 closedBtn.addEventListener("click",async()=>{
+      spinner.classList.remove("hidden")
      for(const btn of btnSet){
         if(btn==closedBtn){
             btn.classList.add("bg-blue-700","text-white")
@@ -159,6 +162,7 @@ closedBtn.addEventListener("click",async()=>{
 })
 
 allBtn.addEventListener("click",async()=>{
+      spinner.classList.remove("hidden")
      for(const btn of btnSet){
         
             btn.classList.remove("bg-blue-700","text-white")
@@ -170,3 +174,82 @@ allBtn.addEventListener("click",async()=>{
    allCardLoader();
 
 })
+
+
+
+
+//modal 
+
+async function  modalShow(id){
+  console.log(id)
+    const url=`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`
+   const res= await fetch(url);
+   const data=await res.json();
+   const obj=data.data;
+   console.log(obj);
+
+   const inner=document.getElementById("inner");
+   innerHTML="";
+   inner.innerHTML=`
+   
+     <div class="max-w-xl bg-gray-100 rounded-xl shadow-md overflow-hidden border-t-4 border-green-600 p-5 space-y-4">
+
+  <!-- Title -->
+  <h2 class="text-2xl font-bold text-gray-800">
+    ${obj.title}
+  </h2>
+
+  <!-- Status + meta -->
+  <div class="flex items-center gap-3 text-sm text-gray-500">
+    <span class="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+      Opened
+    </span>
+    <span>• Opened by ${obj.assignee}</span>
+    <span>•   ${obj.updatedAt}</span>
+  </div>
+
+  <!-- Labels -->
+  <div class="flex gap-3">
+    
+    <span class="flex items-center gap-2 border border-red-300 text-red-500 px-3 py-1 rounded-full text-sm font-semibold">
+      <i class="fa-solid fa-bug"></i>
+        ${obj.labels[0]}
+    </span>
+
+    <span class="flex items-center gap-2 border border-yellow-400 text-yellow-600 px-3 py-1 rounded-full text-sm font-semibold">
+      <i class="fa-solid fa-circle-question"></i>
+      ${obj.labels[1]??"Help wanted"}
+    </span>
+
+  </div>
+
+  <!-- Description -->
+  <p class="text-gray-600">
+      ${obj.description}
+  </p>
+
+  <!-- Footer info -->
+  <div class="bg-gray-200 rounded-lg p-4 flex justify-between items-center">
+    
+    <div>
+      <p class="text-gray-500 text-sm">Assignee:</p>
+      <p class="font-semibold text-gray-800">  ${obj.assignee}</p>
+    </div>
+
+    <div>
+      <p class="text-gray-500 text-sm">Priority:</p>
+      <span class="bg-red-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
+        HIGH
+      </span>
+    </div>
+
+  </div>
+
+</div>
+   
+   `
+
+   modal.showModal();
+
+}
+
